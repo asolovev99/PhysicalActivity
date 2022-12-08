@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_development/4_semestr/PhysicalActivity/app/src/main/res/layout/activity_list_of_exercises.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android_development/4_semestr/PhysicalActivity/app/src/main/res/layout/activity_calendar.xml" value="0.21302083333333333" />
+        <entry key="..\:/Android_development/4_semestr/PhysicalActivity/app/src/main/res/layout/activity_list_of_exercises.xml" value="0.33" />
         <entry key="..\:/Android_development/4_semestr/PhysicalActivity/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
