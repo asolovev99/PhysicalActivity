@@ -15,7 +15,28 @@
         android:theme="@style/Theme.PhysicalActivity"
         tools:targetApi="31">
         <activity
-            android:name=".Calendar"
+            android:name=".DayDetailed"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddTask"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PhysicalActivityDetailed"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CalendarActivity"
             android:exported="false" />
         <activity
             android:name=".ListOfExercises"
