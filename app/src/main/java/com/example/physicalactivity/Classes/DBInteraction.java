@@ -124,7 +124,7 @@ public class DBInteraction extends SQLiteOpenHelper {
     public ArrayList<PhysicalActivity> get_activities(ArrayList<Tag> tagsFilter, String sort, String find) {
         ArrayList<PhysicalActivity> physicalActivities = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String request = "select DISTINCT activities.id, activities.name, activities.description " +
+        String request = "select DISTINCT activities.id, activities.name, activities.description, activities.gif_name " +
                 "from activities " +
                 "join tags_of_activities " +
                 "on activities.id = tags_of_activities.id_activity ";
@@ -154,6 +154,8 @@ public class DBInteraction extends SQLiteOpenHelper {
                 int idActivity = activityCursor.getInt(0);
                 String nameActivity = activityCursor.getString(1);
                 String descriptionActivity = activityCursor.getString(2);
+                String nameOfGif = activityCursor.getString(3);
+
                 ArrayList<Tag> tags = new ArrayList<>();
 
                 request = "select tags.id, tags.name " +
@@ -171,7 +173,7 @@ public class DBInteraction extends SQLiteOpenHelper {
                 }
                 tagCursor.close();
 
-                physicalActivities.add(new PhysicalActivity(idActivity, nameActivity, descriptionActivity, tags));
+                physicalActivities.add(new PhysicalActivity(idActivity, nameActivity, descriptionActivity, nameOfGif, tags));
             } while (activityCursor.moveToNext());
         }
 
@@ -215,12 +217,14 @@ public class DBInteraction extends SQLiteOpenHelper {
         public int id;
         public String name;
         public String description;
+        public String nameOfGif;
         public ArrayList<Tag> tags;
 
-        public PhysicalActivity(int id, String name, String description, ArrayList<Tag> tags) {
+        public PhysicalActivity(int id, String name, String description, String nameOfGif, ArrayList<Tag> tags) {
             this.id = id;
             this.name = name;
             this.description = description;
+            this.nameOfGif = nameOfGif;
             this.tags = tags;
         }
     }

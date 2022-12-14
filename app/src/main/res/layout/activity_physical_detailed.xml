@@ -11,7 +11,9 @@ android:layout_height="wrap_content">
         android:layout_margin="5dp"
         android:text=""
         android:textAlignment="center"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+
+        android:scrollbars="vertical"/>
 
     <Button
         android:id="@+id/btn_add_task"
@@ -25,7 +27,11 @@ android:layout_height="wrap_content">
         android:layout_marginBottom="5dp"
         android:onClick="BtnAddTaskOnClick"
         android:text="Добавить" />
-
+    <WebView
+        android:id="@+id/gif_activity_detailed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_add_task"/>
     <TextView
         android:id="@+id/text_activity_description"
         android:layout_width="match_parent"
@@ -34,5 +40,6 @@ android:layout_height="wrap_content">
         android:text=""
         android:textAlignment="gravity"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/btn_add_task"/>
+        android:layout_below="@id/gif_activity_detailed"
+        android:scrollbars="vertical"/>
 </RelativeLayout>

@@ -2,9 +2,11 @@ package com.example.physicalactivity.Classes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -57,6 +59,8 @@ public class PhysicalActivityListOfExercisesAdapter extends ArrayAdapter<DBInter
                     .findViewById(R.id.text_name);
             holder.mTextViewDescription = (TextView) convertView
                     .findViewById(R.id.text_description);
+            holder.mGifWebViewActivity = (WebView) convertView
+                    .findViewById(R.id.gif_activity_list_of_exercises);
             holder.mRelativeLayout = (RelativeLayout) convertView
                     .findViewById(R.id.relative_layout);
             convertView.setTag(holder);
@@ -71,51 +75,38 @@ public class PhysicalActivityListOfExercisesAdapter extends ArrayAdapter<DBInter
         holder.mTextViewDescription.setText(listPhysicalActivity.get(position).description);
         //isFromView = false;
 
-
-        /*if ((position == 0)) {
-            holder.mTextViewDescription.setVisibility(View.INVISIBLE);
-        } else {
-            holder.mTextViewDescription.setVisibility(View.VISIBLE);
-        }*/
         holder.mTextViewDescription.setVisibility(View.VISIBLE);
         holder.mTextViewDescription.setTag(position);
+
+
+
+        holder.mGifWebViewActivity.loadUrl("file:///android_asset/Exercises gifs/" + listPhysicalActivity.get(position).nameOfGif);
+        holder.mGifWebViewActivity.getSettings().setLoadWithOverviewMode(true);
+        holder.mGifWebViewActivity.getSettings().setUseWideViewPort(true);
+
+
+
 
         holder.mRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*ViewGroup viewGroup = (ViewGroup) view;
-                for (int i = 0; i < viewGroup .getChildCount(); i++) {
-
-                    View viewChild = viewGroup .getChildAt(i);
-                    viewChild.setPressed(true);
-
-                }*/
-                //listPhysicalActivity.get(position)
                 Intent intent = new Intent(mContext, PhysicalActivityDetailed.class);
 
                 intent.putExtra("id", listPhysicalActivity.get(position).id);
                 intent.putExtra("name", listPhysicalActivity.get(position).name);
                 intent.putExtra("description", listPhysicalActivity.get(position).description);
+                intent.putExtra("gifName", listPhysicalActivity.get(position).nameOfGif);
 
                 mContext.startActivity(intent);
             }
         });
-        /*holder.mTextViewDescription.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                int getPosition = (Integer) buttonView.getTag();
-
-                if (!isFromView) {
-                    listPhysicalActivity.get(position).setSelected(isChecked);
-                }
-            }
-        });*/
         return convertView;
     }
 
     private class ViewHolder {
         private TextView mTextViewName;
+        private WebView mGifWebViewActivity;
         private TextView mTextViewDescription;
         private RelativeLayout mRelativeLayout;
     }

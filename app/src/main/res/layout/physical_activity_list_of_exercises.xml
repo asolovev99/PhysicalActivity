@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/relative_layout">
 
@@ -12,6 +12,11 @@
         android:text="text"
         android:textAlignment="gravity"
         android:layout_alignParentTop="true"/>
+    <WebView
+        android:id="@+id/gif_activity_list_of_exercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name"/>
     <TextView
         android:id="@+id/text_description"
         android:layout_width="match_parent"
@@ -19,6 +24,6 @@
         android:layout_marginLeft="20dp"
         android:text="text"
         android:textAlignment="gravity"
-        android:layout_below="@id/text_name"
+        android:layout_below="@id/gif_activity_list_of_exercises"
         />
 </RelativeLayout>
